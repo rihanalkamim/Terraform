@@ -3,12 +3,14 @@ terraform {
     aws = {
       source  = "kreuzwerker/docker"
       version = "~> 3.0.1"
-      region = "us-west-2"
     }
   }
 }
 
-provider "docker" {}
+provider "docker" {
+  profile = "default"
+  region = "us-west-2"
+}
 
 resource "docker_image" "nginx" {
   name         = "nginx"
