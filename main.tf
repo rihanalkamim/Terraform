@@ -3,6 +3,7 @@ terraform {
     aws = {
       source  = "kreuzwerker/docker"
       version = "~> 3.0.1"
+      region = "us-west-2"
     }
   }
 }
@@ -21,6 +22,10 @@ resource "docker_container" "nginx" {
   ports {
     internal = 80
     external = 8000
+  }
+
+  tags = {
+    name = "Instance use AWS"
   }
 }
 
